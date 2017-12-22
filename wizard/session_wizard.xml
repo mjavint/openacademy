@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="open_session_wizard" model="ir.ui.view">
+            <field name="name">open.session.wizard</field>
+            <field name="model">openacademy.session.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="session_report_ids" />
+                    </group>
+                    <footer>
+                        <button type="object" name="print_session_report" string="Print" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!--action wizard session report-->
+        <record model="ir.actions.act_window" id="session_wizard_action">
+            <field name="name">Print Sessions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">openacademy.session.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_type">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!--menuitem que invoca session_wizard_action-->
+        <menuitem id="session_menu" name="Print Sessions" parent="open_wizard_menu" action="session_wizard_action"/>
+    </data>
+</odoo>

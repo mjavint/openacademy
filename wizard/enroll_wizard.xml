@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="open_enroll_wizard" model="ir.ui.view">
+            <field name="name">open.enroll.wizard</field>
+            <field name="model">openacademy.enroll</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="enroll_attendee_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button type="object" name="action_enroll" string="OK" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_enroll_wizard_att" model="ir.ui.view">
+            <field name="name">open.enroll.wizard_att</field>
+            <field name="model">enroll.attendee</field>
+            <field name="arch" type="xml">
+                <form>
+                <group>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="enroll_wizard_action">
+            <field name="name">Enroll</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">openacademy.enroll</field>
+            <field name="view_mode">form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="open_enroll_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="open_wizard_menu" name="Wizard" parent="main_openacademy_menu"/>
+        <menuitem id="enroll_menu" name="Enroll" parent="open_wizard_menu" action="enroll_wizard_action"/>
+    </data>
+</odoo>

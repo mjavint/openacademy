@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_partner_form_inherit_openacademy">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+               <xpath expr="//page[@name='sales_purchases']//field[@name='supplier']" position="after">
+                   <field name="is_instructor"/>
+               </xpath>
+                <xpath expr="//page[@name='sales_purchases']" position="after">
+                    <page string="Sessions" attrs="{'invisible':[('is_instructor','=',False)]}">
+                        <field name="session_ids"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

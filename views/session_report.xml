@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="openacademy_session_template"
+                string="Open Academy Report"
+                model="openacademy.session"
+                report_type="qweb-html"
+                name="openacademy.session_template"
+                file="openacademy.session_template"
+                />
+    </data>
+</odoo>
